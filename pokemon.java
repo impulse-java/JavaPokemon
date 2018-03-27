@@ -3,9 +3,6 @@ package pokemon;
 import java.util.Scanner;
 import java.util.Random;
 
-import java.util.Scanner;
-import java.util.Random;
-
 class pokemon {
   private final String CHARIZARD;
   private String pika;
