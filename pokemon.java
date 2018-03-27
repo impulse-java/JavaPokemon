@@ -9,7 +9,12 @@ class pokemon {
     private int health;
     private String moves;
     
-    
+    public pokemon() {
+        charizard = "Charizard";
+        System.out.println("You encountered a wild " + charizard);
+        System.out.println();
+        
+    }
     
 }
 
