@@ -71,7 +71,6 @@ class pMoveSet {
   private final String CHARIZARD;
   private  final String PIKA;
   public static int c_health = 120;
-  public static int pHealth = 90;
   private String moves;
   private int thunderbolt;
   private int tackle;
@@ -102,12 +101,15 @@ class pMoveSet {
     System.out.println("Moves: \n(1) Thunderbolt \n(2) Tackle \n(3) Double-Team");
     System.out.print("> ");
     int chooseMove = key.nextInt();
+    moveSet atk;
+    
+    // This massive switch statement is a mess. Really needs to be fixed
     switch(chooseMove) {
       case 1:
         System.out.println("\n" + PIKA + " used Thunderbolt!");
         if(miss == 1) {
             System.out.println("Pikachu's attack missed!");
-            moveSet atk1 = new moveSet();
+            atk = new moveSet();
             break;
         }
         else {
@@ -127,7 +129,7 @@ class pMoveSet {
                 System.out.println("You win!");
                 System.exit(1);
             }
-            moveSet atk1 = new moveSet();
+            atk = new moveSet();
         }
       break;
         
@@ -135,7 +137,7 @@ class pMoveSet {
         System.out.println("\n" + PIKA + " used Tackle!");
         if(miss == 1) {
             System.out.println("Pikachu's attack missed!");
-            moveSet atk2 = new moveSet();
+            atk = new moveSet();
             break;
         }
         else {
@@ -156,7 +158,7 @@ class pMoveSet {
             System.exit(1);
             }
         }
-        moveSet atk2 = new moveSet();
+        atk = new moveSet();
        break;
         
       case 3:
@@ -164,7 +166,7 @@ class pMoveSet {
         System.out.println();
         Thread.sleep(1000);
         System.out.println("Pikachu's speed went up by " + dteam + "!");
-        moveSet atk3 = new moveSet();
+        atk = new moveSet();
         break;
         
       case 4:
@@ -186,7 +188,7 @@ class pMoveSet {
           System.out.println("You win!");
           System.exit(1);
         }
-        moveSet atk4 = new moveSet();
+        atk = new moveSet();
         return;
         
       default:
