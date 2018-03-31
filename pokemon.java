@@ -121,7 +121,7 @@ class p_moveSet {
                 Thread.sleep(1000);
                 System.out.println("Game over! ");
                 System.out.println("You win!");
-                break;
+                System.exit(1);
             }
             moveSet atk1 = new moveSet();
         }
@@ -149,7 +149,7 @@ class p_moveSet {
             Thread.sleep(1000);
             System.out.println("Game over! ");
             System.out.println("You win!");
-            break;
+            System.exit(1);
             }
         }
         moveSet atk2 = new moveSet();
@@ -180,7 +180,7 @@ class p_moveSet {
           Thread.sleep(1000);
           System.out.println("Game over! ");
           System.out.println("You win!");
-          return;
+          System.exit(1);
         }
         moveSet atk4 = new moveSet();
         return;
@@ -208,6 +208,7 @@ class game {
   public game() throws InterruptedException {
     Scanner key = new Scanner(System.in);
     
+    
     thunderbolt = 30;
     tackle = 15;
     dteam = 5;
@@ -231,39 +232,16 @@ class game {
     System.out.println("GO! " + pika + "!");
     p_moveSet mvs1 = new p_moveSet();
     
-    Thread.sleep(3000);
-    System.out.println();
-    System.out.println("Your turn!");
-    p_moveSet mvs2 = new p_moveSet();
-    
-    Thread.sleep(3000);
-    System.out.println();
-    System.out.println("Your turn!");
-    p_moveSet mvs3 = new p_moveSet();
-    
-    Thread.sleep(3000);
-    System.out.println();
-    System.out.println("Your turn!");
-    p_moveSet mvs4 = new p_moveSet();
-    
-    Thread.sleep(3000);
-    System.out.println();
-    System.out.println("Your turn!");
-    p_moveSet mvs5 = new p_moveSet();
-    
-    Thread.sleep(3000);
-    System.out.println();
-    System.out.println("Your turn!");
-    p_moveSet mvs6 = new p_moveSet();
-    
-    Thread.sleep(3000);
-    System.out.println();
-    System.out.println("Your turn!");
-    p_moveSet mvs7 = new p_moveSet();
+    do {
+      Thread.sleep(3000);
+      System.out.println();
+      System.out.println("Your turn!");
+      p_moveSet mvs2 = new p_moveSet();
+    }while(c_health >= 0);
   }
 }
 
-class Pokemon {
+class Main {
   
   public static void main(String[] args) throws InterruptedException {
     game ex = new game();
