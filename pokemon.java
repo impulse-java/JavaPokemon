@@ -4,12 +4,15 @@ import java.util.Scanner;
 import java.util.Random;
 
 class moveSet {
+  // moveSet will control all moves for the enemy Pokemon
+  // Need to create new class and remove logic from constructors
   
   private int flamethrower;
   private int fly;
   private int smokescreen;
   private int struggle;
-  public int p_health = 90;
+  public int pHealth = 90;
+  // Declaring moves and player's health
   
   public moveSet() throws InterruptedException {
     flamethrower = 25;
@@ -27,9 +30,9 @@ class moveSet {
       System.out.println("\nCharizard used Flamethrower! ");
       Thread.sleep(1000);
       
-      p_health = p_health - flamethrower;
-      System.out.println("Pikachu has " + p_health + " health left!");
-      if(p_health == 0) {
+      pHealth = pHealth - flamethrower;
+      System.out.println("Pikachu has " + pHealth + " health left!");
+      if(pHealth == 0) {
           System.out.println("Pikachu has been knocked out!");
           System.out.println("Game over! ");
           return;
@@ -41,9 +44,9 @@ class moveSet {
       System.out.println("\nCharizard used Fly! ");
       Thread.sleep(1000);
       
-      p_health = p_health - fly;
-      System.out.println("Pikachu has " + p_health + " health left!");
-      if(p_health == 0) {
+      pHealth = pHealth - fly;
+      System.out.println("Pikachu has " + pHealth + " health left!");
+      if(pHealth == 0) {
           System.out.println("Pikachu has been knocked out!");
           System.out.println("Game over! ");
           return;
@@ -61,11 +64,14 @@ class moveSet {
   }
 }
 
-class p_moveSet {
+class pMoveSet {
+  // Player's move-set controlled from this constructor
+  // Logic also needs to be moved out of these constructors
+  
   private final String CHARIZARD;
   private  final String PIKA;
   public static int c_health = 120;
-  public static int p_health = 90;
+  public static int pHealth = 90;
   private String moves;
   private int thunderbolt;
   private int tackle;
@@ -76,7 +82,8 @@ class p_moveSet {
   private int struggle;
   private int miss;
   
-  public p_moveSet() throws InterruptedException {
+  public pMoveSet() throws InterruptedException {
+    // Method controls all of the moves available to the player
     Scanner key = new Scanner(System.in);
     
     thunderbolt = 30;
@@ -190,6 +197,7 @@ class p_moveSet {
 }
 
 class game {
+  // Set up to run the entire program
   private final String CHARIZARD;
   private final String PIKA;
   public static int c_health;
@@ -208,13 +216,13 @@ class game {
     Thread.sleep(1500);
     
     System.out.println("\nGO! " + PIKA + "!");
-    p_moveSet mvs1 = new p_moveSet();
+    pMoveSet mvs1 = new pMoveSet();
     
     do {
       Thread.sleep(3000);
       System.out.println();
       System.out.println("Your turn!");
-      p_moveSet mvs2 = new p_moveSet();
+      pMoveSet mvs2 = new pMoveSet();
     }while(c_health >= 0);
   }
 }
@@ -223,5 +231,6 @@ class Main {
   
   public static void main(String[] args) throws InterruptedException {
     game ex = new game();
+    // Instantiating "game" to run the whole program
   }
 }
