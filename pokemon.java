@@ -19,14 +19,12 @@ class moveSet {
     
     System.out.println();
     System.out.println("Charizard's turn! ");
-    System.out.println();
     Thread.sleep(1000);
     int moveRand = (int) (Math.random() * 4 + 1);
     if(moveRand == 1) {
       Thread.sleep(1000);
       
-      System.out.println();
-      System.out.println("Charizard used Flamethrower! ");
+      System.out.println("\nCharizard used Flamethrower! ");
       Thread.sleep(1000);
       
       p_health = p_health - flamethrower;
@@ -40,8 +38,7 @@ class moveSet {
     if(moveRand == 2) {
       Thread.sleep(1000);
       
-      System.out.println();
-      System.out.println("Charizard used Fly! ");
+      System.out.println("\nCharizard used Fly! ");
       Thread.sleep(1000);
       
       p_health = p_health - fly;
@@ -66,7 +63,7 @@ class moveSet {
 
 class p_moveSet {
   private final String CHARIZARD;
-  private String pika;
+  private  final String PIKA;
   public static int c_health = 120;
   public static int p_health = 90;
   private String moves;
@@ -91,7 +88,7 @@ class p_moveSet {
     struggle = 10;
     
     CHARIZARD = "Charizard";
-    pika = "Pikachu";
+    PIKA = "Pikachu";
     
     miss = (int)(Math.random() * 10);
     
@@ -100,7 +97,7 @@ class p_moveSet {
     int chooseMove = key.nextInt();
     switch(chooseMove) {
       case 1:
-        System.out.println(pika + " used Thunderbolt!");
+        System.out.println("\n" + PIKA + " used Thunderbolt!");
         if(miss == 1) {
             System.out.println("Pikachu's attack missed!");
             moveSet atk1 = new moveSet();
@@ -119,7 +116,7 @@ class p_moveSet {
                 System.out.println("Charizard has been knocked out!");
           
                 Thread.sleep(1000);
-                System.out.println("Game over! ");
+                System.out.println("\nGame over! ");
                 System.out.println("You win!");
                 System.exit(1);
             }
@@ -128,7 +125,7 @@ class p_moveSet {
       break;
         
       case 2:
-        System.out.println(pika + " used Tackle!");
+        System.out.println("\n" + PIKA + " used Tackle!");
         if(miss == 1) {
             System.out.println("Pikachu's attack missed!");
             moveSet atk2 = new moveSet();
@@ -147,7 +144,7 @@ class p_moveSet {
             System.out.println("Charizard has been knocked out!");
           
             Thread.sleep(1000);
-            System.out.println("Game over! ");
+            System.out.println("\nGame over! ");
             System.out.println("You win!");
             System.exit(1);
             }
@@ -156,7 +153,7 @@ class p_moveSet {
        break;
         
       case 3:
-        System.out.println(pika + " used Double-Team!");
+        System.out.println("\n" + PIKA + " used Double-Team!");
         System.out.println();
         Thread.sleep(1000);
         System.out.println("Pikachu's speed went up by " + dteam + "!");
@@ -164,7 +161,7 @@ class p_moveSet {
         break;
         
       case 4:
-        System.out.println(pika + " used Struggle!");
+        System.out.println(PIKA + " used Struggle!");
         System.out.println();
         Thread.sleep(1000);
         System.out.println("It did " + struggle + " damage!");
@@ -178,7 +175,7 @@ class p_moveSet {
           System.out.println("Charizard has been knocked out!");
           
           Thread.sleep(1000);
-          System.out.println("Game over! ");
+          System.out.println("\nGame over! ");
           System.out.println("You win!");
           System.exit(1);
         }
@@ -194,42 +191,23 @@ class p_moveSet {
 
 class game {
   private final String CHARIZARD;
-  private String pika;
+  private final String PIKA;
   public static int c_health;
-  public static int p_health;
-  private int thunderbolt;
-  private int tackle;
-  private int dteam;
-  private int flamethrower;
-  private int fly;
-  private int smokescreen;
-  private int struggle;
+
   
   public game() throws InterruptedException {
-    Scanner key = new Scanner(System.in);
-    
-    
-    thunderbolt = 30;
-    tackle = 15;
-    dteam = 5;
-    flamethrower = 25;
-    fly = 20;
-    smokescreen = 5;
-    struggle = 10;
-    
     c_health = 120;
     
     CHARIZARD = "Charizard";
-    pika = "Pikachu";
+    PIKA = "Pikachu";
     
     System.out.println("You encountered a wild " + CHARIZARD + "!");
     Thread.sleep(500);
     System.out.println("Charizard's Health: " + c_health);
-    System.out.println();
     
     Thread.sleep(1500);
     
-    System.out.println("GO! " + pika + "!");
+    System.out.println("\nGO! " + PIKA + "!");
     p_moveSet mvs1 = new p_moveSet();
     
     do {
