@@ -208,8 +208,7 @@ class game {
     
     do {
       Thread.sleep(3000);
-      System.out.println();
-      System.out.println("Your turn!");
+      System.out.println("\nYour turn!");
       pMoveSet mvs2 = new pMoveSet();
     }while(cHealth >= 0);
   }
