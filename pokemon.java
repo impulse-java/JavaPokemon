@@ -1,7 +1,6 @@
 package pokemon;
 
 import java.util.Scanner;
-import java.util.Random;
 
 class moveSet {
     // moveSet will control all moves for the enemy Pokemon
@@ -12,52 +11,46 @@ class moveSet {
     private int smokescreen = 5;
     private int struggle = 10;
     public int pHealth = 90;
+    private int miss;
     // Declaring moves and player's health
 
     public moveSet() throws InterruptedException {
 
+        // These statements need to be moved outside of the constructors
         System.out.println("\nCharizard's turn! ");
         Thread.sleep(1000);
-        int moveRand = (int) (Math.random() * 4 + 1);
-        if(moveRand == 1) {
-            Thread.sleep(1000);
+        miss = (int)(Math.random() * 10);
+        int chooseMove = (int)(Math.random()) * 3 + 1;
 
-            System.out.println("\nCharizard used Flamethrower! ");
-            Thread.sleep(1000);
-
-            pHealth -= flamethrower;
-            System.out.println("Pikachu has " + pHealth + " health left!");
-            if(pHealth == 0) {
-                System.out.println("Pikachu has been knocked out!");
-                System.out.println("Game over! ");
-                System.exit(1);
+        if(chooseMove == 1) {
+            if(miss == 1) {
+                System.out.println("Charizard's attack missed!");
+                return;
             }
-            return;
-        }
-        if(moveRand == 2) {
-            Thread.sleep(1000);
-
-            System.out.println("\nCharizard used Fly! ");
-            Thread.sleep(1000);
-
-            pHealth -= fly;
-            System.out.println("Pikachu has " + pHealth + " health left!");
-            if(pHealth == 0) {
-                System.out.println("Pikachu has been knocked out!");
-                System.out.println("Game over! ");
-                System.exit(1);
+            else {
+                System.out.println("Charizard used Flamethrower!");
+                pHealth -= flamethrower;
+                Thread.sleep(1000);
+                System.out.println("\nPikachu has " + pHealth + " health left!");
+                return;
             }
-            return;
         }
-        if(moveRand == 3) {
+        if(chooseMove == 2) {
+            if(miss == 1) {
+                System.out.println("Charizard's attack missed!");
+                return;
+            }
+            else {
+                System.out.println("Charizard used Fly!");
+                pHealth -= fly;
+                Thread.sleep(1000);
+                System.out.println("\nPikachu has " + pHealth + " health left!");
+                return;
+            }
+        }
+        if(chooseMove == 3) {
             Thread.sleep(1000);
-
-            System.out.println();
-            System.out.println("Charizard used Smokescreen!");
-            return;
-        }
-        if(moveRand == 4) {
-            System.out.println("Charizard's attack missed!");
+            System.out.println("Charizard used SmokeScreen!");
             return;
         }
     }
@@ -78,6 +71,7 @@ class pMoveSet {
     private int smokescreen = 5;
     private int struggle = 10;
     private int miss;
+
 
     public pMoveSet() throws InterruptedException {
         // Method controls all of the moves available to the player
