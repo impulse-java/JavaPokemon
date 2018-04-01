@@ -10,7 +10,7 @@ class moveSet {
     private int fly = 20;
     private int smokescreen = 5;
     private int struggle = 10;
-    public int pHealth = 90;
+    public static int pHealth = 90;
     private int miss;
     // Declaring moves and player's health
 
@@ -19,7 +19,7 @@ class moveSet {
         // These statements need to be moved outside of the constructors
         System.out.println("\nCharizard's turn! ");
         Thread.sleep(1000);
-        miss = (int)(Math.random() * 10);
+        miss = (int)(Math.random() * 10 + 1);
         int chooseMove = (int)(Math.random()) * 3 + 1;
 
         if(chooseMove == 1) {
@@ -32,6 +32,11 @@ class moveSet {
                 pHealth -= flamethrower;
                 Thread.sleep(1000);
                 System.out.println("\nPikachu has " + pHealth + " health left!");
+                if(pHealth <= 0) {
+                  System.out.println("Game over!");
+                  System.out.println("You lose!");
+                  System.exit(1);
+                }
                 return;
             }
         }
@@ -45,6 +50,11 @@ class moveSet {
                 pHealth -= fly;
                 Thread.sleep(1000);
                 System.out.println("\nPikachu has " + pHealth + " health left!");
+                if(pHealth <= 0) {
+                  System.out.println("Game over!");
+                  System.out.println("You lose!");
+                  System.exit(1);
+                }
                 return;
             }
         }
@@ -102,7 +112,7 @@ class pMoveSet {
                     cHealth -= thunderbolt;
                     System.out.println("Charizard has " + cHealth + " health left");
                     Thread.sleep(2000);
-                    if(cHealth == 0) {
+                    if(cHealth <= 0) {
                         System.out.println("Charizard has been knocked out!");
 
                         Thread.sleep(1000);
@@ -130,7 +140,7 @@ class pMoveSet {
                     cHealth -= tackle;
                     System.out.println("Charizard has " + cHealth + " health left");
                     Thread.sleep(2000);
-                    if(cHealth == 0) {
+                    if(cHealth <= 0) {
                         System.out.println("Charizard has been knocked out!");
 
                         Thread.sleep(1000);
@@ -161,7 +171,7 @@ class pMoveSet {
                 cHealth -= struggle;
                 System.out.println("Charizard has " + cHealth + " health left");
                 Thread.sleep(2000);
-                if(cHealth == 0) {
+                if(cHealth <= 0) {
                     System.out.println("Charizard has been knocked out!");
 
                     Thread.sleep(1000);
@@ -181,31 +191,23 @@ class pMoveSet {
 
 class game {
     // Set up to run the entire program
-    private final String CHARIZARD;
-    private final String PIKA;
-    public static int cHealth;
-
 
     public game() throws InterruptedException {
-        cHealth = 120;
 
-        CHARIZARD = "Charizard";
-        PIKA = "Pikachu";
-
-        System.out.println("You encountered a wild " + CHARIZARD + "!");
+        System.out.println("You encountered a wild Charizard!");
         Thread.sleep(500);
-        System.out.println("Charizard's Health: " + cHealth);
+        System.out.println("Charizard's Health: 120");
 
         Thread.sleep(1500);
 
-        System.out.println("\nGO! " + PIKA + "!");
+        System.out.println("\nGO! Pikachu!");
         pMoveSet mvs1 = new pMoveSet();
-
-        do {
-            Thread.sleep(3000);
+        
+        for(;;) {
+          Thread.sleep(3000);
             System.out.println("\nYour turn!");
             pMoveSet mvs2 = new pMoveSet();
-        }while(cHealth >= 0);
+        }
     }
 }
 
