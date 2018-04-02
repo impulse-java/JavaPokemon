@@ -8,10 +8,9 @@ class moveSet {
 
     private int flamethrower = 25;
     private int fly = 20;
-    private int smokescreen = 5;
-    private int struggle = 10;
     public static int pHealth = 90;
     private int miss;
+    private int critical;
     // Declaring moves and player's health
 
     public moveSet() throws InterruptedException {
@@ -20,6 +19,7 @@ class moveSet {
         System.out.println("\nCharizard's turn! ");
         Thread.sleep(1000);
         miss = (int)(Math.random() * 10 + 1);
+        critical = (int)(Math.random() * 20 + 1);
         int chooseMove = (int)(Math.random()) * 3 + 1;
 
         if(chooseMove == 1) {
@@ -28,16 +28,31 @@ class moveSet {
                 return;
             }
             else {
-                System.out.println("Charizard used Flamethrower!");
-                pHealth -= flamethrower;
-                Thread.sleep(1000);
-                System.out.println("\nPikachu has " + pHealth + " health left!");
-                if(pHealth <= 0) {
-                  System.out.println("Game over!");
-                  System.out.println("You lose!");
-                  System.exit(1);
+                if(critical == 1) {
+                    System.out.println("Charizard used Flamethrower!");
+                    pHealth -= flamethrower * 2;
+                    Thread.sleep(1000);
+                    System.out.println("Critical hit!");
+                    System.out.println("\nPikachu has " + pHealth + " health left!");
+                    if(pHealth <= 0) {
+                        System.out.println("Game over!");
+                        System.out.println("You lose!");
+                        System.exit(1);
+                    }
+                    return;
                 }
-                return;
+                else {
+                    System.out.println("Charizard used Flamethrower!");
+                    pHealth -= flamethrower;
+                    Thread.sleep(1000);
+                    System.out.println("\nPikachu has " + pHealth + " health left!");
+                    if(pHealth <= 0) {
+                        System.out.println("Game over!");
+                        System.out.println("You lose!");
+                        System.exit(1);
+                    }
+                    return;
+                }
             }
         }
         if(chooseMove == 2) {
@@ -46,16 +61,31 @@ class moveSet {
                 return;
             }
             else {
-                System.out.println("Charizard used Fly!");
-                pHealth -= fly;
-                Thread.sleep(1000);
-                System.out.println("\nPikachu has " + pHealth + " health left!");
-                if(pHealth <= 0) {
-                  System.out.println("Game over!");
-                  System.out.println("You lose!");
-                  System.exit(1);
+                if(critical == 1) {
+                    System.out.println("Charizard used Fly!");
+                    pHealth -= fly * 2;
+                    Thread.sleep(1000);
+                    System.out.println("Critical hit!");
+                    System.out.println("\nPikachu has " + pHealth + " health left!");
+                    if(pHealth <= 0) {
+                        System.out.println("Game over!");
+                        System.out.println("You lose!");
+                        System.exit(1);
+                    }
+                    return;
                 }
-                return;
+                else {
+                    System.out.println("Charizard used Fly!");
+                    pHealth -= flamethrower;
+                    Thread.sleep(1000);
+                    System.out.println("\nPikachu has " + pHealth + " health left!");
+                    if(pHealth <= 0) {
+                        System.out.println("Game over!");
+                        System.out.println("You lose!");
+                        System.exit(1);
+                    }
+                    return;
+                }
             }
         }
         if(chooseMove == 3) {
@@ -76,11 +106,9 @@ class pMoveSet {
     private int thunderbolt = 30;
     private int tackle = 15;
     private int dteam = 5;
-    private int flamethrower = 25;
-    private int fly = 20;
-    private int smokescreen = 5;
     private int struggle = 10;
     private int miss;
+    private int critical;
 
 
     public pMoveSet() throws InterruptedException {
@@ -202,9 +230,9 @@ class game {
 
         System.out.println("\nGO! Pikachu!");
         pMoveSet mvs1 = new pMoveSet();
-        
+
         for(;;) {
-          Thread.sleep(3000);
+            Thread.sleep(3000);
             System.out.println("\nYour turn!");
             pMoveSet mvs2 = new pMoveSet();
         }
